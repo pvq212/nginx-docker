@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+    nginx:
+        container_name: nginx
+        network_mode: host
+        volumes:
+            - './data/logs:/var/log/nginx'
+            - './data/html:/usr/share/nginx/html'
+            - './nginx.conf:/etc/nginx/nginx.conf'
+            - './sites:/etc/nginx/conf.d'
+            - './ssl:/etc/nginx/ssl/'
+        privileged: true
+        restart: unless-stopped
+        image: nginx
